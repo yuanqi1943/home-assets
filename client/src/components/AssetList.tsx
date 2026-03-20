@@ -1,0 +1,72 @@
+import type { Asset } from '../api/api';
+import { getImageUrl } from '../api/api';
+import { Calendar, Tag, DollarSign, Clock, Edit2, Trash2 } from 'lucide-react';
+
+interface AssetCardProps {
+    asset: Asset;
+    onEdit: (asset: Asset) => void;
+    onDelete: (id: string) => void;
+}
+
+export default function AssetCard({ asset, onEdit, onDelete }: AssetCardProps) {
+    const formatPrice = (price: number | null) => {
+        if (price === null) return '未标价';
+        return `¥${price.toLocaleString('zh-CN')}`;
+    };
+
+    const formatDate = (date: string | null) => {
+        if (!date) return '未知';
+        return new Date(date).toLocaleDateString('zh-CN');
+    };
+
+    return (
+        <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100">
+            <div className="aspect-video bg-gray-100 relative overflow-hidden group">
+                <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                        onClick={() => onEdit(asset)}
+                        className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 text-blue-600"
+                    >
+                        <Edit2 size={16} />
+                    </button>
+                    <button
+                        onClick={() => onDelete(asset.id)}
+                        className="p-2 bg-white rounded-full shadow-md hover:bg-red-50 text-red-600"
+                    >
+                        <Trash2 size={16} />
+                    </button>
+                </div>
+            </div>
+
+            <div className="p-4">
+                <h3 className="font-semibold text-lg mb-1 truncate">{asset.name}</h3>
+
+                <div className="flex items-center gap-2 text-2xl font-bold text-blue-600 mb-3">
+                    {formatPrice(asset.price)}
+                </div>
+
+                <div className="space-y-2 text-sm text-gray-600">
+                    {asset.category && (
+                        <div className="flex items-center gap-2">
+                            <Tag size={14} />
+                            <span className="px-2 py-1 bg-gray-100 rounded-full text-xs">{asset.category}</span>
+                        </div>
+                    )}
+
+                    {asset.purchase_date && (
+                        <div className="flex items-center gap-2">
+                            <Calendar size={14} />
+                            <span>购买于 {formatDate(asset.purchase_date)}</span>
+                        </div>
+                    )}
+
+
+                </div>
+
+                {/* {asset.description && (
+                    <p className="mt-3 text-sm text-gray-500 line-clamp-2">{asset.description}</p>
+                )} */}
+            </div>
+        </div>
+    );
+}
