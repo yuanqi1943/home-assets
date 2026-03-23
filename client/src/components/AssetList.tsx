@@ -10,7 +10,7 @@ interface AssetCardProps {
 export default function AssetCard({ asset, onEdit, onDelete }: AssetCardProps) {
     const formatPrice = (price: number | null) => {
         if (price === null) return '未标价';
-        return `¥${price.toLocaleString('zh-CN')}`;
+        return `¥${price}`;
     };
 
     const formatDate = (date: string | null) => {

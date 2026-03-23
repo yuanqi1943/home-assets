@@ -117,7 +117,7 @@ export default function App() {
               <div>
                 <p className="text-sm text-gray-500 mb-1">资产总值</p>
                 <p className="text-3xl font-bold text-green-600">
-                  ¥{stats.total_value.toLocaleString('zh-CN')}
+                  ¥{stats.total_value}
                 </p>
               </div>
               <div className="p-3 bg-green-50 rounded-lg">
