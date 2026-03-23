@@ -8,9 +8,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # 忽略环境变量文件
-.env
-.env.local
-.env.*.local
+.
 
 # 忽略编辑器配置
 .vscode/

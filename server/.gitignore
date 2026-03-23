@@ -8,9 +8,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # 忽略环境变量文件
-.env
-.env.local
-.env.*.local
 
 # 忽略编辑器配置
 .vscode/
@@ -25,5 +22,3 @@ Thumbs.db
 # 忽略构建输出
 dist/
 build/
-uploads/
-data/
