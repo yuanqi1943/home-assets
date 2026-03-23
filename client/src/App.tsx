@@ -231,7 +231,14 @@ export default function App() {
           <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <AssetForm
-                initialData={editingAsset || undefined}
+                initialData={editingAsset ? {
+                  ...editingAsset,
+                  price: editingAsset.price ?? undefined,
+                  category: editingAsset.category ?? undefined,
+                  purchase_date: editingAsset.purchase_date ?? undefined,
+                  warranty_period: editingAsset.warranty_period ?? undefined,
+                  description: editingAsset.description ?? undefined,
+                } : undefined}
                 onSubmit={handleSubmit}
                 onCancel={closeForm}
               />

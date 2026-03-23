@@ -1,6 +1,6 @@
 import type { Asset } from '../api/api';
 import { getImageUrl } from '../api/api';
-import { Calendar, Tag, DollarSign, Clock, Edit2, Trash2 } from 'lucide-react';
+import { Calendar, Tag, Edit2, Trash2 } from 'lucide-react';
 
 interface AssetCardProps {
     asset: Asset;
@@ -18,15 +18,6 @@ export default function AssetCard({ asset, onEdit, onDelete }: AssetCardProps) {
         if (!date) return '未知';
         return new Date(date).toLocaleDateString('zh-CN');
     };
-
-    const isWarrantyValid = (purchaseDate: string | null, period: number | null) => {
-        if (!purchaseDate || !period) return null;
-        const purchase = new Date(purchaseDate);
-        const warrantyEnd = new Date(purchase.setMonth(purchase.getMonth() + period));
-        return warrantyEnd > new Date();
-    };
-
-    const warrantyStatus = isWarrantyValid(asset.purchase_date, asset.warranty_period);
 
     return (
         <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden border border-gray-100">

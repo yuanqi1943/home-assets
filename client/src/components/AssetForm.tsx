@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { X, Upload, Camera } from 'lucide-react';
+import { X, Camera } from 'lucide-react';
 import type { CreateAssetData } from '../api/api';
 
 const schema = z.object({

@@ -1,6 +1,5 @@
 import type { Asset } from '../api/api';
-import { getImageUrl } from '../api/api';
-import { Calendar, Tag, DollarSign, Clock, Edit2, Trash2 } from 'lucide-react';
+import { Calendar, Tag, Edit2, Trash2 } from 'lucide-react';
 
 interface AssetCardProps {
     asset: Asset;
